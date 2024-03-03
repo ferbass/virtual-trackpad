@@ -62,16 +62,16 @@ void TrackpadWidget::onSensitivityChanged(int value) {
 }
 
 void TrackpadWidget::onMousePressed(const QPoint &pos) {
-  QString message = QString("MouseDown %1,%2\n").arg(pos.x()).arg(pos.y());
+  QString message = QString("CLK %1,%2\n").arg(pos.x()).arg(pos.y());
   serialPortHandler->writeData(message.toLocal8Bit());
 }
 
 void TrackpadWidget::onMouseReleased(const QPoint &pos) {
-  QString message = QString("MouseUp %1,%2\n").arg(pos.x()).arg(pos.y());
+  QString message = QString("CLKR %1,%2\n").arg(pos.x()).arg(pos.y());
   serialPortHandler->writeData(message.toLocal8Bit());
 }
 
 void TrackpadWidget::onMouseMoved(const QPoint &pos) {
-  QString message = QString("MouseMove %1,%2\n").arg(pos.x()).arg(pos.y());
+  QString message = QString("MOV %1,%2\n").arg(pos.x()).arg(pos.y());
   serialPortHandler->writeData(message.toLocal8Bit());
 }
