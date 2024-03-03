@@ -15,7 +15,7 @@ class TrackpadWidget : public QWidget {
     explicit TrackpadWidget(QWidget *parent = nullptr);
 
     private slots:
-      void attemptOpenSerialPort();
+    void attemptOpenSerialPort();
     void handlePortOpened(bool success);
     void onMousePressed(const QPoint &pos);
     void onMouseReleased(const QPoint &pos);
@@ -29,11 +29,8 @@ class TrackpadWidget : public QWidget {
     TrackpadArea* trackpadArea;
     QSlider *sensitivitySlider;
 
-    float sensitivity = 1.0;
-
     void setupUI();
     void setupTrackpadUI();
-    void updateSensitivity(int value);
 };
 
 #endif // TRACKPADWIDGET_H

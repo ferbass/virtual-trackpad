@@ -19,15 +19,6 @@ void TrackpadWidget::setupUI() {
   connect(serialPortHandler, &SerialPortHandler::portOpened, this, &TrackpadWidget::handlePortOpened);
 }
 
-void TrackpadWidget::onSensitivityChanged(int value) {
-  updateSensitivity(value);
-}
-
-void TrackpadWidget::updateSensitivity(int value) {
-  sensitivity = static_cast<float>(value) / 10.0f; // Convert range [1, 10] to [0.1, 1.0] for sensitivity
-  qDebug() << "Sensitivity adjusted to:" << sensitivity;
-}
-
 void TrackpadWidget::attemptOpenSerialPort() {
   QString selectedPortName = portComboBox->currentText();
   serialPortHandler->openSerialPort(selectedPortName);
@@ -64,6 +55,10 @@ void TrackpadWidget::setupTrackpadUI() {
   connect(trackpadArea, &TrackpadArea::mousePressed, this, &TrackpadWidget::onMousePressed);
   connect(trackpadArea, &TrackpadArea::mouseReleased, this, &TrackpadWidget::onMouseReleased);
   connect(trackpadArea, &TrackpadArea::mouseMoved, this, &TrackpadWidget::onMouseMoved);
+}
+
+void TrackpadWidget::onSensitivityChanged(int value) {
+  trackpadArea->onSensitivityChanged(value);
 }
 
 void TrackpadWidget::onMousePressed(const QPoint &pos) {

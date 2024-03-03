@@ -26,8 +26,6 @@ void TrackpadArea::mouseMoveEvent(QMouseEvent *event) {
     int deltaX = currentPos.x() - lastPos.x();
     int deltaY = currentPos.y() - lastPos.y();
 
-    // TODO set sensitivity dynamicaly
-    float sensitivity = 5.0;
     float adjustedDeltaX = deltaX * sensitivity;
     float adjustedDeltaY = deltaY * sensitivity;
 
@@ -37,4 +35,9 @@ void TrackpadArea::mouseMoveEvent(QMouseEvent *event) {
 
     emit mouseMoved(QPoint(adjustedDeltaX, adjustedDeltaY));
   }
+}
+
+void TrackpadArea::onSensitivityChanged(int value) {
+  qDebug() << "Sensitivity changed to: " << value;
+  sensitivity = static_cast<float>(value);
 }

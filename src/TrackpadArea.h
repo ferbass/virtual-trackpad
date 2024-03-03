@@ -9,6 +9,7 @@ class TrackpadArea : public QLabel {
 
   public:
     explicit TrackpadArea(QWidget *parent = nullptr);
+    void onSensitivityChanged(int value);
 
 signals:
     void mousePressed(const QPoint &pos);
@@ -19,6 +20,9 @@ signals:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+
+  private:
+    float sensitivity = 1.0;
 };
 
 #endif // TRACKPADAREA_H
