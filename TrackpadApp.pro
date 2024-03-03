@@ -18,14 +18,9 @@ QT += core gui widgets serialport
 
 CONFIG += c++11
 
-SOURCES += main.cpp \
-TrackpadWidget.cpp \
-TrackpadArea.cpp \
-SerialPortHandler.cpp
+SOURCES += src/*.cpp
 
-HEADERS += TrackpadWidget.h \
-TrackpadArea.h \
-SerialPortHandler.h
+HEADERS += src/*.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
